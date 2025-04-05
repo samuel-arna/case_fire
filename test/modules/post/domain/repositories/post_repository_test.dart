@@ -56,5 +56,14 @@ void main() {
       expect(post.body!.isNotEmpty, true);
       verify(() => mockDatasource.getPosts()).called(1);
     });
+
+    test('Deve receber um erro se o datasource falhar', () async {
+      when(
+        () => mockDatasource.getPosts(),
+      ).thenThrow(Exception('Falha no datasource'));
+
+      expect(() async => await repository.getPosts(), throwsException);
+      verify(() => mockDatasource.getPosts()).called(1);
+    });
   });
 }
