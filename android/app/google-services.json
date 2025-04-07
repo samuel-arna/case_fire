@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "891499869032",
+    "project_id": "case-fire",
+    "storage_bucket": "case-fire.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891499869032:android:7d6fd2aad0b3ee91305cdd",
+        "android_client_info": {
+          "package_name": "com.example.case_fire"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxunrJVDxUsEeInBV_eCEFXr5OnzAs9IQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
