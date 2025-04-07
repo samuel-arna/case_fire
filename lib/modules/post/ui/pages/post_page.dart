@@ -1,6 +1,8 @@
+import 'package:case_fire/core/utils/app_colors.dart';
 import 'package:case_fire/modules/post/ui/stores/bloc/post_bloc.dart';
 import 'package:case_fire/modules/post/ui/stores/bloc/post_event.dart';
 import 'package:case_fire/modules/post/ui/stores/bloc/post_state.dart';
+import 'package:case_fire/modules/post/ui/widgets/list_posts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,14 +27,11 @@ class _PostPageState extends State<PostPage> {
       body: BlocBuilder<PostBloc, PostState>(
         builder: (context, state) {
           if (state is PostLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is PostLoaded) {
-            return ListView.builder(
-              itemCount: state.posts.length,
-              itemBuilder: (context, index) {
-                return ListTile(title: Text(state.posts[index].title));
-              },
+            return Center(
+              child: CircularProgressIndicator(color: AppColors.textColor),
             );
+          } else if (state is PostLoaded) {
+            return ListPosts(posts: state.posts);
           } else if (state is PostError) {
             return Center(child: Text('Erro: ${state.error}'));
           } else {
