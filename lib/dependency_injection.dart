@@ -4,6 +4,11 @@ import 'package:case_fire/modules/auth/domain/usecases/get_current_user_usecase.
 import 'package:case_fire/modules/auth/domain/usecases/login_usecase.dart';
 import 'package:case_fire/modules/auth/domain/usecases/logout_usecase.dart';
 import 'package:case_fire/modules/auth/ui/stores/bloc/auth_bloc.dart';
+import 'package:case_fire/modules/author/ui/stores/bloc/author_bloc.dart';
+import 'package:case_fire/modules/author/data/datasources/author_firestore_datasource.dart';
+import 'package:case_fire/modules/author/data/repositories/author_repository_impl.dart';
+import 'package:case_fire/modules/author/domain/repositories/author_repository.dart';
+import 'package:case_fire/modules/author/domain/usecases/get_author_usecase.dart';
 import 'package:case_fire/modules/post/data/datasources/post_placeholder_datasource.dart';
 import 'package:case_fire/modules/post/domain/repositories/post_repository.dart';
 import 'package:case_fire/modules/post/domain/usecases/get_posts_usecase.dart';
@@ -40,4 +45,14 @@ Future<void> configureDependencies() async {
   di.registerLazySingleton<PostRepository>(() => PostRepositoryImpl(di()));
   di.registerLazySingleton(() => GetPostsUseCase(di()));
   di.registerFactory(() => PostBloc(getPostsUseCase: di()));
+
+  // Author
+  di.registerLazySingleton<AuthorFirestoreDatasource>(
+    () => AuthorFirestoreDatasource(),
+  );
+  di.registerLazySingleton<AuthorRepository>(
+    () => AuthorRepositoryImpl(authorFirestoreDatasource: di()),
+  );
+  di.registerLazySingleton(() => GetAuthorUseCase(repository: di()));
+  di.registerFactory(() => AuthorBloc(getAuthorUseCase: di()));
 }
