@@ -18,6 +18,8 @@ class FireBaseError {
         return 'Usuário ou senha inválidos';
       case 'wrong-password':
         return 'Usuário ou senha inválidos';
+      case 'invalid-credential':
+        return 'Usuário ou senha inválidos';
       default:
         return 'Erro desconhecido... $errorCode';
     }

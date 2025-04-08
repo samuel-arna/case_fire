@@ -2,7 +2,9 @@ import 'package:case_fire/core/utils/app_theme.dart';
 import 'package:case_fire/dependency_injection.dart';
 import 'package:case_fire/modules/auth/ui/pages/auth_page.dart';
 import 'package:case_fire/modules/auth/ui/stores/bloc/auth_bloc.dart';
+import 'package:case_fire/modules/post/ui/pages/post_page.dart';
 import 'package:case_fire/modules/post/ui/stores/bloc/post_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +28,19 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.theme,
         debugShowCheckedModeBanner: false,
         title: 'Case Fire',
-        home: AuthPage(),
+        home: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Scaffold(); // depois uma tela de splash
+            }
+            if (snapshot.hasData) {
+              return const PostPage();
+            } else {
+              return const AuthPage();
+            }
+          },
+        ),
       ),
     );
   }
