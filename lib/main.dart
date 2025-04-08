@@ -2,6 +2,7 @@ import 'package:case_fire/core/utils/app_theme.dart';
 import 'package:case_fire/dependency_injection.dart';
 import 'package:case_fire/modules/auth/ui/pages/auth_page.dart';
 import 'package:case_fire/modules/auth/ui/stores/bloc/auth_bloc.dart';
+import 'package:case_fire/modules/author/ui/stores/bloc/author_bloc.dart';
 import 'package:case_fire/modules/post/ui/pages/post_page.dart';
 import 'package:case_fire/modules/post/ui/stores/bloc/post_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<PostBloc>(create: (context) => di<PostBloc>()),
         BlocProvider<AuthBloc>(create: (context) => di<AuthBloc>()),
+        BlocProvider<AuthorBloc>(create: (context) => di<AuthorBloc>()),
       ],
       child: MaterialApp(
         theme: AppTheme.theme,
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Scaffold(); // depois uma tela de splash
+              return const Scaffold();
             }
             if (snapshot.hasData) {
               return const PostPage();
