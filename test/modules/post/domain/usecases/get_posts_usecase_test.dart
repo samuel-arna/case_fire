@@ -1,7 +1,9 @@
+import 'package:case_fire/core/errors/failure.dart';
 import 'package:case_fire/modules/post/data/datasources/post_placeholder_datasource.dart';
 import 'package:case_fire/modules/post/domain/entities/post_entity.dart';
 import 'package:case_fire/modules/post/domain/repositories/post_repository.dart';
 import 'package:case_fire/modules/post/domain/usecases/get_posts_usecase.dart';
+import 'package:either_dart/src/either.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -26,10 +28,11 @@ void main() {
 
       when(() => datasource.getPosts()).thenAnswer((_) async => mockPosts);
 
-      List<PostEntity> listPost = await GetPostsUseCase(repository).execute();
+      Either<Failure, List<PostEntity>> listPost =
+          await GetPostsUseCase(repository).execute();
 
-      expect(listPost.isNotEmpty, true);
-      expect(listPost, isA<List<PostEntity>>());
+      expect(listPost.right.isNotEmpty, true);
+      expect(listPost, isA<Either<Failure, List<PostEntity>>>());
       verify(() => datasource.getPosts()).called(1);
     });
 
@@ -40,11 +43,12 @@ void main() {
 
       when(() => datasource.getPosts()).thenAnswer((_) async => mockPosts);
 
-      List<PostEntity> listPost = await GetPostsUseCase(repository).execute();
-      PostEntity post = listPost.first;
+      Either<Failure, List<PostEntity>> listPost =
+          await GetPostsUseCase(repository).execute();
+      PostEntity post = listPost.right.first;
 
-      expect(listPost.isNotEmpty, true);
-      expect(listPost, isA<List<PostEntity>>());
+      expect(listPost.right.isNotEmpty, true);
+      expect(listPost, isA<Either<Failure, List<PostEntity>>>());
       expect(post.title, '');
       verify(() => datasource.getPosts()).called(1);
     });
