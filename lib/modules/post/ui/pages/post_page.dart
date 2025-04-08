@@ -1,13 +1,11 @@
 import 'package:case_fire/core/utils/app_colors.dart';
-import 'package:case_fire/modules/auth/ui/stores/bloc/auth_bloc.dart';
-import 'package:case_fire/modules/auth/ui/stores/bloc/auth_event.dart';
 import 'package:case_fire/modules/post/ui/stores/bloc/post_bloc.dart';
 import 'package:case_fire/modules/post/ui/stores/bloc/post_event.dart';
 import 'package:case_fire/modules/post/ui/stores/bloc/post_state.dart';
 import 'package:case_fire/modules/post/ui/widgets/list_posts.dart';
+import 'package:case_fire/modules/post/ui/widgets/logout_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key});
@@ -26,20 +24,7 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Posts'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: GestureDetector(
-              onTap: () {
-                BlocProvider.of<AuthBloc>(context).add(Logout());
-              },
-              child: FaIcon(FontAwesomeIcons.rightToBracket),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('Posts'), actions: [LogoutButton()]),
       body: BlocBuilder<PostBloc, PostState>(
         builder: (context, state) {
           if (state is PostLoading) {
