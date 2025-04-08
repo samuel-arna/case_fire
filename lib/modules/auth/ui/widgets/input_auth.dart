@@ -1,6 +1,7 @@
 import 'package:case_fire/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InputAuth extends StatelessWidget {
   final IconData icon;
@@ -44,15 +45,14 @@ class InputAuth extends StatelessWidget {
                 child: TextField(
                   controller: controller,
                   obscureText: pass ?? false,
-                  style: TextStyle(
+                  style: GoogleFonts.montserrat(
                     color: AppColors.textHighlightColor,
                     fontSize: 18,
                   ),
-
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: hint,
-                    hintStyle: TextStyle(
+                    hintStyle: GoogleFonts.montserrat(
                       color: AppColors.textHighlightColor,
                       fontSize: 18,
                     ),

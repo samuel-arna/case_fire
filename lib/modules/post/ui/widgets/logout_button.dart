@@ -15,7 +15,15 @@ class LogoutButton extends StatelessWidget {
         onTap: () {
           BlocProvider.of<AuthBloc>(context).add(Logout());
         },
-        child: const FaIcon(FontAwesomeIcons.rightToBracket),
+        child: Row(
+          spacing: 9,
+
+          children: [
+            Text('Sair', style: TextStyle(color: Colors.white, fontSize: 21)),
+
+            const FaIcon(FontAwesomeIcons.rightToBracket),
+          ],
+        ),
       ),
     );
   }
