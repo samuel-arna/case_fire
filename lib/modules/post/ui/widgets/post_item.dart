@@ -1,5 +1,5 @@
 import 'package:case_fire/core/utils/app_colors.dart';
-import 'package:case_fire/modules/author/ui/pages/author_page.dart';
+import 'package:case_fire/modules/author/ui/widgets/author_photo.dart';
 import 'package:case_fire/modules/post/domain/entities/post_entity.dart';
 import 'package:case_fire/modules/post/ui/functions/build_body_post.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +22,9 @@ class _PostItemState extends State<PostItem> {
     BuildBodyPost functions = BuildBodyPost();
     return Padding(
       padding: const EdgeInsets.only(bottom: 30),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => AuthorPage(userId: widget.post.userId),
-            ),
-          );
-        },
+      child: AnimatedSize(
+        duration: const Duration(milliseconds: 100),
+
         child: Container(
           decoration: BoxDecoration(
             color: AppColors.cardBackground,
@@ -47,6 +42,10 @@ class _PostItemState extends State<PostItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 30,
               children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: AuthorPhoto(userId: widget.post.userId),
+                ),
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
