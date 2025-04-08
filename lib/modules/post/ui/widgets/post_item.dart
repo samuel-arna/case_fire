@@ -1,7 +1,7 @@
 import 'package:case_fire/core/utils/app_colors.dart';
+import 'package:case_fire/modules/author/ui/pages/author_page.dart';
 import 'package:case_fire/modules/post/domain/entities/post_entity.dart';
 import 'package:case_fire/modules/post/ui/functions/build_body_post.dart';
-import 'package:case_fire/modules/post/ui/pages/post_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,7 +26,7 @@ class _PostItemState extends State<PostItem> {
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => PostDetailsPage(post: widget.post),
+              builder: (_) => AuthorPage(userId: widget.post.userId),
             ),
           );
         },
