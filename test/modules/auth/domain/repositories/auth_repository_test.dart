@@ -1,5 +1,5 @@
 import 'package:case_fire/modules/auth/data/datasource/auth_firebase_datasource.dart';
-import 'package:case_fire/modules/auth/domain/repositories/auth_repository.dart';
+import 'package:case_fire/modules/auth/data/repositories/auth_repositoy_impl.dart';
 import 'package:either_dart/either.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';

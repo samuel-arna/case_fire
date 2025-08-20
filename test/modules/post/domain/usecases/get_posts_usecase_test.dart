@@ -1,7 +1,7 @@
 import 'package:case_fire/core/errors/failure.dart';
 import 'package:case_fire/modules/post/data/datasources/post_placeholder_datasource.dart';
+import 'package:case_fire/modules/post/data/repositories/post_repository_impl.dart';
 import 'package:case_fire/modules/post/domain/entities/post_entity.dart';
-import 'package:case_fire/modules/post/domain/repositories/post_repository.dart';
 import 'package:case_fire/modules/post/domain/usecases/get_posts_usecase.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:flutter_test/flutter_test.dart';

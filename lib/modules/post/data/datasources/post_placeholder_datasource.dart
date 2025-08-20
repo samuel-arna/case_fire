@@ -1,3 +1,4 @@
+import 'package:case_fire/core/debugger/app_debug.dart';
 import 'package:dio/dio.dart';
 
 class PostPlaceholderDatasource {
@@ -18,7 +19,7 @@ class PostPlaceholderDatasource {
         throw Exception('Falha ao pegar posts, erro: ${response.statusCode}');
       }
     } catch (e) {
-      print('Falha ao pegar posts: $e');
+      AppDebug(message: 'Falha ao pegar posts: $e');
       rethrow;
     }
   }

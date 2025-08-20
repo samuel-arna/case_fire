@@ -1,4 +1,5 @@
 import 'package:case_fire/modules/auth/data/datasource/auth_firebase_datasource.dart';
+import 'package:case_fire/modules/auth/data/repositories/auth_repositoy_impl.dart';
 import 'package:case_fire/modules/auth/domain/repositories/auth_repository.dart';
 import 'package:case_fire/modules/auth/domain/usecases/get_current_user_usecase.dart';
 import 'package:case_fire/modules/auth/domain/usecases/login_usecase.dart';
@@ -10,6 +11,7 @@ import 'package:case_fire/modules/author/data/repositories/author_repository_imp
 import 'package:case_fire/modules/author/domain/repositories/author_repository.dart';
 import 'package:case_fire/modules/author/domain/usecases/get_author_usecase.dart';
 import 'package:case_fire/modules/post/data/datasources/post_placeholder_datasource.dart';
+import 'package:case_fire/modules/post/data/repositories/post_repository_impl.dart';
 import 'package:case_fire/modules/post/domain/repositories/post_repository.dart';
 import 'package:case_fire/modules/post/domain/usecases/get_posts_usecase.dart';
 import 'package:case_fire/modules/post/ui/stores/bloc/post_bloc.dart';

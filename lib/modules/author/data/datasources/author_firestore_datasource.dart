@@ -1,3 +1,4 @@
+import 'package:case_fire/core/debugger/app_debug.dart';
 import 'package:case_fire/modules/author/data/models/author_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -11,7 +12,7 @@ class AuthorFirestoreDatasource {
       final data = snapshot.data();
       return data != null ? AuthorModel.fromJson(data) : null;
     } catch (e) {
-      print('Erro ao buscar dados do autor no Firestore: $e');
+      AppDebug(message: 'Erro ao buscar dados do autor no Firestore: $e');
       return null;
     }
   }

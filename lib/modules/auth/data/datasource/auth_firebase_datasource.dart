@@ -1,3 +1,4 @@
+import 'package:case_fire/core/debugger/app_debug.dart';
 import 'package:case_fire/modules/auth/data/error/firebase_error.dart';
 import 'package:either_dart/either.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,7 +30,7 @@ class AuthFirebaseDatasource {
     try {
       await _auth.signOut();
     } catch (e) {
-      print("Erro durante o logout: $e");
+      AppDebug(message: "Erro durante o logout: $e");
     }
   }
 
@@ -37,7 +38,7 @@ class AuthFirebaseDatasource {
     try {
       return _auth.currentUser;
     } catch (e) {
-      print("Erro ao pegar user: $e");
+      AppDebug(message: "Erro ao pegar user: $e");
       return null;
     }
   }

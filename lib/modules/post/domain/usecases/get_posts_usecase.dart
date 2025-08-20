@@ -1,3 +1,4 @@
+import 'package:case_fire/core/debugger/app_debug.dart';
 import 'package:case_fire/core/errors/failure.dart';
 import 'package:case_fire/core/errors/generic_failure.dart';
 import 'package:case_fire/modules/post/domain/entities/post_entity.dart';
@@ -16,7 +17,7 @@ class GetPostsUseCase {
           posts.map((model) => PostEntity.fromModel(model)).toList();
       return Right(postEntities);
     } catch (e) {
-      print('Erro na use case: $e');
+      AppDebug(message: 'Erro na use case: $e');
       return Left(GenericFailure(message: e.toString()));
     }
   }
